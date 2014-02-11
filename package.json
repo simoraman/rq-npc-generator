@@ -1,0 +1,19 @@
+{
+  "name": "js-unit-test-template",
+  "version": "1.0.0",
+  "author": "Simo Råman <simoraman@gmail.com>",
+  "scripts": {
+    "pretest": "node_modules/coffee-script/bin/coffee -cj test/alltests.js test/*.coffee",
+    "test": "node_modules/mocha-phantomjs/bin/mocha-phantomjs test/runner.html"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "coffee-script": "1.6.x",
+    "mocha": "1.9.x",
+    "phantomjs": "1.9.x",
+    "mocha-phantomjs": "2.0.x",
+    "chai": "1.6.x",
+    "bower": "latest"
+  }
+}

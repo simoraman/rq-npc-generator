@@ -1,0 +1,23 @@
+{
+  "name": "rq-npc",
+  "version": "0.0.0",
+  "authors": [
+    "Simo Råman <simoraman@gmail.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bacon": "latest",
+    "handlebars": "latest",
+    "requirejs": "latest",
+    "requirejs-text": "latest",
+    "require-handlebars-plugin": "latest"
+  }
+}
