@@ -1,5 +1,3 @@
-rollD = (d) -> Math.floor(Math.random() * d + 1)
-
 describe 'Rolling D6', ->
   result = null
 
@@ -11,41 +9,12 @@ describe 'Rolling D6', ->
   it 'should be less or equal to 6', ->
     result.should.be.below 7
 
-
-rollD = (d) -> 3
-
-class Character
-  constructor: ->
-    @strength = (rollD 6) + (rollD 6) + (rollD 6)
-    @stamina = (rollD 6) + (rollD 6) + (rollD 6)
-    @power = (rollD 6) + (rollD 6) + (rollD 6)
-    @dexterity = (rollD 6) + (rollD 6) + (rollD 6)
-    @charisma = (rollD 6) + (rollD 6) + (rollD 6)
-    @intelligence = 6 + (rollD 6) + (rollD 6)
-    @size = 6 + (rollD 6) + (rollD 6)
-    @health = Math.round((@stamina + @size) / 2)
-
-  dexterityStrikeRank: () ->
-    if @dexterity > 19
-      1
-    else if @dexterity > 15
-      2
-    else if @dexterity > 9
-      3
-    else
-      4
-
-  sizeStrikeRank: () ->
-    switch
-      when @size > 19 then 0
-      when @size > 15 then 1
-      when @size > 9 then 2
-      else 3
-
 describe 'Character', ->
+
   character = null
   before ->
-    character = new Character()
+    rollD = (d) -> 3
+    character = new Character(rollD)
 
   it 'should have properties', ->
     character.strength.should.equal 9

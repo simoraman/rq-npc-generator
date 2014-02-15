@@ -2,10 +2,6 @@
 (function() {
   var Character, rollD;
 
-  rollD = function(d) {
-    return Math.floor(Math.random() * d + 1);
-  };
-
   describe('Rolling D6', function() {
     var result;
     result = null;
@@ -20,56 +16,15 @@
     });
   });
 
-  rollD = function(d) {
-    return 3;
-  };
-
-  Character = (function() {
-    function Character() {
-      this.strength = (rollD(6)) + (rollD(6)) + (rollD(6));
-      this.stamina = (rollD(6)) + (rollD(6)) + (rollD(6));
-      this.power = (rollD(6)) + (rollD(6)) + (rollD(6));
-      this.dexterity = (rollD(6)) + (rollD(6)) + (rollD(6));
-      this.charisma = (rollD(6)) + (rollD(6)) + (rollD(6));
-      this.intelligence = 6 + (rollD(6)) + (rollD(6));
-      this.size = 6 + (rollD(6)) + (rollD(6));
-      this.health = Math.round((this.stamina + this.size) / 2);
-    }
-
-    Character.prototype.dexterityStrikeRank = function() {
-      if (this.dexterity > 19) {
-        return 1;
-      } else if (this.dexterity > 15) {
-        return 2;
-      } else if (this.dexterity > 9) {
-        return 3;
-      } else {
-        return 4;
-      }
-    };
-
-    Character.prototype.sizeStrikeRank = function() {
-      switch (false) {
-        case !(this.size > 19):
-          return 0;
-        case !(this.size > 15):
-          return 1;
-        case !(this.size > 9):
-          return 2;
-        default:
-          return 3;
-      }
-    };
-
-    return Character;
-
-  })();
-
   describe('Character', function() {
     var character;
     character = null;
     before(function() {
-      return character = new Character();
+      var rollD;
+      rollD = function(d) {
+        return 3;
+      };
+      return character = new Character(rollD);
     });
     it('should have properties', function() {
       character.strength.should.equal(9);
@@ -119,5 +74,51 @@
       });
     });
   });
+
+  Character = (function() {
+    function Character(rollD) {
+      this.strength = (rollD(6)) + (rollD(6)) + (rollD(6));
+      this.stamina = (rollD(6)) + (rollD(6)) + (rollD(6));
+      this.power = (rollD(6)) + (rollD(6)) + (rollD(6));
+      this.dexterity = (rollD(6)) + (rollD(6)) + (rollD(6));
+      this.charisma = (rollD(6)) + (rollD(6)) + (rollD(6));
+      this.intelligence = 6 + (rollD(6)) + (rollD(6));
+      this.size = 6 + (rollD(6)) + (rollD(6));
+      this.health = Math.round((this.stamina + this.size) / 2);
+    }
+
+    Character.prototype.dexterityStrikeRank = function() {
+      switch (false) {
+        case !(this.dexterity > 19):
+          return 1;
+        case !(this.dexterity > 15):
+          return 2;
+        case !(this.dexterity > 9):
+          return 3;
+        default:
+          return 4;
+      }
+    };
+
+    Character.prototype.sizeStrikeRank = function() {
+      switch (false) {
+        case !(this.size > 19):
+          return 0;
+        case !(this.size > 15):
+          return 1;
+        case !(this.size > 9):
+          return 2;
+        default:
+          return 3;
+      }
+    };
+
+    return Character;
+
+  })();
+
+  rollD = function(d) {
+    return Math.floor(Math.random() * d + 1);
+  };
 
 }).call(this);
