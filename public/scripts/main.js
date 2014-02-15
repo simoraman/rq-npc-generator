@@ -12,9 +12,7 @@ require.config({
     waitSeconds: 10
 });
 
-require(["handlebars", "hbs!../templates/character"], function(Handlebars, character_template){
-   // var source = document.querySelector("#character-template").innerHTML;
-   // template = Handlebars.compile(character_template);
-    var html = character_template();
+require(["handlebars", "hbs!../templates/character", 'app/character', 'app/dice'], function(Handlebars, character_template, Character, dice){
+    var html = character_template(new Character(dice));
     document.querySelector("body").innerHTML = html;
 });
