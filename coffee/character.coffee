@@ -24,4 +24,7 @@ define [], () ->
         when @size > 9 then 2
         else 3
 
+    hitFor: (damage) ->
+      @health = @health - damage
+
   return Character
