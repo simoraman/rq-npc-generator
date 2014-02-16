@@ -60,3 +60,9 @@ describe 'Character', ->
     it 'should equal 0 for size 20', ->
       character.size = 20
       character.sizeStrikeRank().should.equal 0
+
+  describe 'hitting', ->
+    it 'should decrease health', ->
+      character.health = 10
+      character.hitFor(5)
+      character.health.should.equal 5

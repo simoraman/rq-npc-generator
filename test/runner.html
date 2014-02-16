@@ -12,10 +12,6 @@
       mocha.reporter('html');
       var should = chai.should();
     </script>
-    <script src="alltests.js"></script>
-    <script>
-      if (window.mochaPhantomJS) { mochaPhantomJS.run(); }
-      else { mocha.run(); }
-    </script>
+    <script data-main="test-config.js" src="../public/scripts/requirejs/require.js"></script>
   </body>
 </html>
