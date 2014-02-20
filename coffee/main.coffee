@@ -11,13 +11,20 @@ require.config({
 
 require(['jquery', 'bacon', 'bacon.jquery', 'handlebars', 'hbs!../../templates/character', 'character', 'dice', 'bacon.model'],
 ($, Bacon, bjq, Handlebars, character_template, Character, dice, Model) ->
-  html = character_template(new Character(dice))
+  character = new Character(dice)
+
+  html = character_template(character)
   $('body').html(html)
 
-  left = bjq.textFieldValue($("#left"))
+  hitAmount = bjq.textFieldValue($('#hitAmount'))
+  hitAmount.changes().assign($('#hitDisplay'), 'text')
 
-  right = bjq.textFieldValue($("#hitAmount"))
-
-  right.map(".toUpperCase").changes().assign($("#hitDisplay"), "text")
+  $hitDisplay = $('#hitDisplay')
+  clicks = $('#hit').clickE()
+  clicks.onValue( ->
+    character.hitFor($hitDisplay.text())
+    $('#health').text(character.health)
+    hitAmount.set(0)
+  )
 
 )
