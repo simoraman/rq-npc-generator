@@ -12,9 +12,20 @@ describe 'Rolling D6', ->
 describe 'Character', ->
 
   character = null
-  before ->
+  beforeEach ->
     rollD = (d) -> 3
-    character = new Character(rollD)
+    weapon =
+        {
+          "Weapon":"Battleaxe",
+          "Damage":"1d8+2",
+          "STR":13,
+          "DEX":9,
+          "ENC":1,
+          "BaseSkill":10,
+          "AP":8,
+          "StrikeRank":2
+        }
+    character = new Character(rollD, weapon)
 
   it 'should have properties', ->
     character.strength.should.equal 9
@@ -27,6 +38,9 @@ describe 'Character', ->
 
   it 'should have health', ->
     character.health.should.equal 11
+
+  it 'should have a weapon', ->
+    character.weapon.Weapon.should.equal 'Battleaxe'
 
   describe 'Dexterity Strike rank', ->
     it 'should equal 4 for DEX 9', ->
@@ -61,8 +75,30 @@ describe 'Character', ->
       character.size = 20
       character.sizeStrikeRank().should.equal 0
 
+  describe 'Total Strike Rank', ->
+    it 'should equal sum of Size, Dexterity and weapon Strike Rank', ->
+      character.totalStrikeRank().should.equal 8
+
   describe 'hitting', ->
     it 'should decrease health', ->
       character.health = 10
       character.hitFor(5)
       character.health.should.equal 5
+
+class WeaponRepository
+  constructor: (@weapons) ->
+  getWeapon: () -> @weapons[0]
+
+describe 'Weapon repository', ->
+  it 'should return a weapon', ->
+    weapons = [{
+      "Weapon":"Battleaxe",
+      "Damage":"1d8+2",
+      "STR":13,
+      "DEX":9,
+      "ENC":1,
+      "BaseSkill":10,
+      "AP":8
+    }]
+    repo = new WeaponRepository(weapons)
+    repo.getWeapon().Weapon.should.equal "Battleaxe"

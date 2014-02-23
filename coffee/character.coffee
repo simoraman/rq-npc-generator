@@ -1,6 +1,6 @@
 define [], () ->
   class Character
-    constructor: (rollD) ->
+    constructor: (rollD, @weapon) ->
       @strength = (rollD 6) + (rollD 6) + (rollD 6)
       @stamina = (rollD 6) + (rollD 6) + (rollD 6)
       @power = (rollD 6) + (rollD 6) + (rollD 6)
@@ -23,6 +23,8 @@ define [], () ->
         when @size > 15 then 1
         when @size > 9 then 2
         else 3
+    totalStrikeRank: () ->
+      this.dexterityStrikeRank() + this.sizeStrikeRank() + @weapon.StrikeRank
 
     hitFor: (damage) ->
       @health = @health - damage
