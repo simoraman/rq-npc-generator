@@ -85,10 +85,6 @@ describe 'Character', ->
       character.hitFor(5)
       character.health.should.equal 5
 
-class WeaponRepository
-  constructor: (@weapons) ->
-  getWeapon: () -> @weapons[0]
-
 describe 'Weapon repository', ->
   it 'should return a weapon', ->
     weapons = [{

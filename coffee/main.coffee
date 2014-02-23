@@ -9,14 +9,15 @@ require.config({
     }
 })
 
-require(['jquery', 'bacon', 'bacon.jquery', 'handlebars', 'hbs!../../templates/character', 'character', 'dice', 'bacon.model'],
-($, Bacon, bjq, Handlebars, character_template, Character, dice, Model) ->
+require(['jquery', 'bacon', 'bacon.jquery', 'handlebars', 'hbs!../../templates/character', 'character', 'dice', 'weaponRepository', 'bacon.model'],
+($, Bacon, bjq, Handlebars, character_template, Character, dice, WeaponRepository, Model) ->
 
   $.get('data/weapons.json', (weapons) ->
     init(weapons)
   )
   init = (weapons) ->
-    character = new Character(dice)
+    repo = new WeaponRepository(weapons)
+    character = new Character(dice, repo.getWeapon())
 
     html = character_template(character)
     $('body').html(html)

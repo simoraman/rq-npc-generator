@@ -6,7 +6,8 @@
     "DEX":9,
     "ENC":1,
     "BaseSkill":10,
-    "AP":8
+    "AP":8,
+    "StrikeRank":2
   },
   {
     "Weapon":"Hatchet",
