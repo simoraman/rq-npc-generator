@@ -1,0 +1,14 @@
+[
+    {
+        "armor":"Leather",
+        "protection":5
+    },
+    {
+        "armor":"Ring",
+        "protection":8
+    },
+    {
+        "armor":"plate",
+        "protection":10
+    }
+]

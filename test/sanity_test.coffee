@@ -12,7 +12,7 @@ describe 'Rolling D6', ->
 describe 'Character', ->
 
   character = null
-  beforeEach ->
+  init =  ->
     rollD = (d) -> 3
     weapon =
         {
@@ -25,22 +25,46 @@ describe 'Character', ->
           "AP":8,
           "StrikeRank":2
         }
-    character = new Character(rollD, weapon)
-
-  it 'should have properties', ->
-    character.strength.should.equal 9
-    character.intelligence.should.equal 12
-    character.stamina.should.equal 9
-    character.power.should.be.equal 9
-    character.size.should.equal 12
-    character.dexterity.should.equal 9
-    character.charisma.should.equal 9
+    armor =
+      {
+        "armor":"No Armor",
+        "protection":0
+      }
+    character = new Character(rollD, weapon, armor)
+  describe 'creation', ->
+    before(init)
+    it 'should have properties', ->
+      character.strength.should.equal 9
+      character.intelligence.should.equal 12
+      character.stamina.should.equal 9
+      character.power.should.be.equal 9
+      character.size.should.equal 12
+      character.dexterity.should.equal 9
+      character.charisma.should.equal 9
 
   it 'should have health', ->
+    init()
     character.health.should.equal 11
 
   it 'should have a weapon', ->
+    init()
     character.weapon.Weapon.should.equal 'Battleaxe'
+
+  describe 'armor', ->
+    before ->
+      init()
+      armor =
+        {
+          "armor":"Leather",
+          "protection":5
+        }
+      character.armor = armor
+    it 'should have armor', ->
+      character.armor.armor.should.equal 'Leather'
+    it 'armor should decrease damage', ->
+      character.health = 10
+      character.hitFor(5)
+      character.health.should.equal 8
 
   describe 'Dexterity Strike rank', ->
     it 'should equal 4 for DEX 9', ->
@@ -76,14 +100,22 @@ describe 'Character', ->
       character.sizeStrikeRank().should.equal 0
 
   describe 'Total Strike Rank', ->
+    before(init)
     it 'should equal sum of Size, Dexterity and weapon Strike Rank', ->
       character.totalStrikeRank().should.equal 8
 
-  describe 'hitting', ->
+  describe 'When getting hit', ->
+    before(init)
     it 'should decrease health', ->
+      character.rollD = -> 0
       character.health = 10
       character.hitFor(5)
       character.health.should.equal 5
+
+  describe 'Fighting', ->
+    it 'should have some attack/defence-skill', ->
+      character.attack.should.equal 13
+      character.defence.should.equal 8
 
 describe 'Weapon repository', ->
   it 'should return a weapon', ->

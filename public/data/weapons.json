@@ -16,16 +16,8 @@
     "DEX":9,
     "ENC":0.5,
     "BaseSkill":10,
-    "AP":6
-  },
-  {
-    "Weapon":"Battleaxe",
-    "Damage":"1d8+2",
-    "STR":9,
-    "DEX":9,
-    "ENC":1,
-    "BaseSkill":5,
-    "AP":8
+    "AP":6,
+    "StrikeRank":2
   },
   {
     "Weapon":"Great Axe",
@@ -34,7 +26,8 @@
     "DEX":9,
     "ENC":2,
     "BaseSkill":5,
-    "AP":10
+    "AP":10,
+    "StrikeRank":1
   },
   {
     "Weapon":"Halberd",
@@ -43,7 +36,8 @@
     "DEX":9,
     "ENC":3,
     "BaseSkill":5,
-    "AP":10
+    "AP":10,
+    "StrikeRank":1
   },
   {
     "Weapon":"Poleaxe",
@@ -52,7 +46,8 @@
     "DEX":9,
     "ENC":2.5,
     "BaseSkill":5,
-    "AP":10
+    "AP":10,
+    "StrikeRank":1
   },
   {
     "Weapon":"Dagger",
@@ -61,7 +56,8 @@
     "DEX":0,
     "ENC":0.5,
     "BaseSkill":15,
-    "AP":6
+    "AP":6,
+    "StrikeRank":3
   },
   {
     "Weapon":"Knife ",
@@ -70,7 +66,8 @@
     "DEX":0,
     "ENC":0.2,
     "BaseSkill":15,
-    "AP":4
+    "AP":4,
+    "StrikeRank":3
   },
   {
     "Weapon":"Ball and Chain",
@@ -79,7 +76,8 @@
     "DEX":7,
     "ENC":2,
     "BaseSkill":5,
-    "AP":8
+    "AP":8,
+    "StrikeRank":2
   },
   {
     "Weapon":"Three Chain",
@@ -88,7 +86,8 @@
     "DEX":13,
     "ENC":2,
     "BaseSkill":5,
-    "AP":10
+    "AP":10,
+    "StrikeRank":2
   },
   {
     "Weapon":"Warhammer",
@@ -97,7 +96,8 @@
     "DEX":9,
     "ENC":2,
     "BaseSkill":10,
-    "AP":8
+    "AP":8,
+    "StrikeRank":2
   },
   {
     "Weapon":"Great Hammer",
@@ -106,7 +106,8 @@
     "DEX":9,
     "ENC":2.5,
     "BaseSkill":5,
-    "AP":10
+    "AP":10,
+    "StrikeRank":1
   },
   {
     "Weapon":"Heavy Mace",
@@ -115,7 +116,8 @@
     "DEX":7,
     "ENC":2.5,
     "BaseSkill":15,
-    "AP":10
+    "AP":10,
+    "StrikeRank":2
   },
   {
     "Weapon":"Light Mace",
@@ -124,7 +126,8 @@
     "DEX":7,
     "ENC":1,
     "BaseSkill":15,
-    "AP":6
+    "AP":6,
+    "StrikeRank":2
   },
   {
     "Weapon":"Singlestick",
@@ -133,7 +136,8 @@
     "DEX":9,
     "ENC":0.5,
     "BaseSkill":15,
-    "AP":5
+    "AP":5,
+    "StrikeRank":2
   },
   {
     "Weapon":"Rapier",
@@ -142,7 +146,8 @@
     "DEX":13,
     "ENC":1,
     "BaseSkill":10,
-    "AP":10
+    "AP":10,
+    "StrikeRank":2
   },
   {
     "Weapon":"Javelin",
@@ -151,7 +156,8 @@
     "DEX":7,
     "ENC":1.5,
     "BaseSkill":5,
-    "AP":8
+    "AP":8,
+    "StrikeRank":2
   },
   {
     "Weapon":"Bastard Sword",
@@ -160,7 +166,8 @@
     "DEX":9,
     "ENC":2,
     "BaseSkill":10,
-    "AP":12
+    "AP":12,
+    "StrikeRank":2
   },
   {
     "Weapon":"Broadsword",
@@ -169,7 +176,8 @@
     "DEX":7,
     "ENC":1.5,
     "BaseSkill":10,
-    "AP":10
+    "AP":10,
+    "StrikeRank":2
   },
   {
     "Weapon":"Sabre",
@@ -178,7 +186,8 @@
     "DEX":11,
     "ENC":1.5,
     "BaseSkill":10,
-    "AP":10
+    "AP":10,
+    "StrikeRank":2
   },
   {
     "Weapon":"Greatsword",
@@ -187,6 +196,7 @@
     "DEX":13,
     "ENC":3.5,
     "BaseSkill":5,
-    "AP":12
+    "AP":12,
+    "StrikeRank":1
   }
 ]

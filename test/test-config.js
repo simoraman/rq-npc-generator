@@ -3,8 +3,8 @@ require.config({
 });
 
 require([
-  'character', 'dice', 'sanity_test', 'weaponRepository'
-], function(Char, dice, sanity_test, weaponRepository) {
+  'character', 'dice', 'sanity_test', 'weaponRepository', 'armorRepository'
+], function(Char, dice, sanity_test, weaponRepository, ArmorRepository) {
   rollD = dice;
   Character = Char;
   WeaponRepository = weaponRepository;

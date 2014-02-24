@@ -8,14 +8,14 @@
     <span>Dexterity: {{dexterity}}</span>
     <span>Charisma: {{charisma}}</span>
   </div>
-  <div class="stats">
-    HP: <span id="health">{{health}}</span> - <span id="hitDisplay"> 0 </span> <input id="hitAmount" type="range" min="0" max="30" step="1" value="0" /> <input type="button" id="hit" value="hit" />
-  </div>
   <div class="strikeRank">
     Strike Rank:
     DEX: {{ dexterityStrikeRank }} + SIZ: {{ sizeStrikeRank }} + Weapon: {{ weapon.StrikeRank }} = {{ totalStrikeRank }}
   </div>
   <div class="weapon">
-    {{weapon.Weapon}} {{weapon.Damage}}
+    {{weapon.Weapon}} {{weapon.Damage}} {{attack}} / {{defence}}
+  </div>
+  <div class="stats">
+    HP: <span id="health">{{health}}</span> - <span id="hitDisplay"> 0 </span> <input id="hitAmount" type="range" min="0" max="30" step="1" value="0" /> <input type="button" id="hit" value="hit" />
   </div>
 </div>
