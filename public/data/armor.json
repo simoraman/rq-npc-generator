@@ -1,5 +1,9 @@
 [
     {
+        "armor":"No Armor",
+        "protection":0
+    },
+    {
         "armor":"Leather",
         "protection":5
     },

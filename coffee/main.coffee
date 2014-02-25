@@ -13,11 +13,13 @@ require(['jquery', 'bacon', 'bacon.jquery', 'handlebars', 'hbs!../../templates/c
 ($, Bacon, bjq, Handlebars, character_template, Character, dice, WeaponRepository, ArmorRepository, Model) ->
 
   $.get('data/weapons.json', (weapons) ->
-    init(weapons)
+    $.get('data/armor.json', (armor) ->
+      init(weapons, armor)
+    )
   )
-  init = (weapons) ->
+  init = (weapons, armor) ->
     repo = new WeaponRepository(weapons)
-    character = new Character(dice, repo.getWeapon())
+    character = new Character(dice, repo.getWeapon(), new ArmorRepository(armor).getArmor())
 
     html = character_template(character)
     $('body').html(html)
