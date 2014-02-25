@@ -1,5 +1,7 @@
 define [], () ->
   class ArmorRepository
     constructor: (@armors) ->
-    getArmor: () -> @armors[0]
+    getArmor: () ->
+      index = Math.floor(Math.random() * @armors.length)
+      @armors[index]
   return ArmorRepository
