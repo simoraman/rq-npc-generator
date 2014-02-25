@@ -30,6 +30,7 @@ define [], () ->
 
     hitFor: (damage) ->
       damage = damage - @rollD(@armor.protection)
-      @health = @health - damage
+      if damage > 0
+        @health = @health - damage
 
   return Character

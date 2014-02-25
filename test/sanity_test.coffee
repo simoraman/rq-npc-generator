@@ -69,6 +69,11 @@ describe 'Character', ->
       character.health = 10
       character.hitFor(5)
       character.health.should.equal 8
+    describe 'when damage less than protection', ->
+      it 'health should stay same', ->
+        character.health = 10
+        character.hitFor(1)
+        character.health.should.equal 10
 
   describe 'Dexterity Strike rank', ->
     it 'should equal 4 for DEX 9', ->
