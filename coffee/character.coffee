@@ -25,6 +25,7 @@ define [], () ->
         when @size > 15 then 1
         when @size > 9 then 2
         else 3
+
     totalStrikeRank: () ->
       this.dexterityStrikeRank() + this.sizeStrikeRank() + @weapon.StrikeRank
 
@@ -32,5 +33,9 @@ define [], () ->
       damage = damage - @rollD(@armor.protection)
       if damage > 0
         @health = @health - damage
+
+    loadValues: (valueObject) ->
+      { @strength, @stamina, @power, @dexterity, @charisma,
+      @intelligence, @size, @health, @attack, @defence, @weapon, @armor } = valueObject
 
   return Character

@@ -27,10 +27,9 @@ require(['jquery', 'bacon', 'bacon.jquery', 'handlebars', 'hbs!../../templates/c
     hitAmount = bjq.textFieldValue($('#hitAmount'))
     hitAmount.changes().assign($('#hitDisplay'), 'text')
 
-    $hitDisplay = $('#hitDisplay')
     clicks = $('#hit').clickE()
     clicks.onValue( ->
-      character.hitFor($hitDisplay.text())
+      character.hitFor($('#hitDisplay').text())
       $('#health').text(character.health)
       hitAmount.set(0)
     )
