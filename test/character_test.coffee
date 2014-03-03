@@ -21,7 +21,9 @@ describe 'Character', ->
       }
     character = new Character(rollD, weapon, @noArmor)
   describe 'creation', ->
+
     before(init)
+
     it 'should have properties', ->
       character.strength.should.equal 9
       character.intelligence.should.equal 12
@@ -30,6 +32,13 @@ describe 'Character', ->
       character.size.should.equal 12
       character.dexterity.should.equal 9
       character.charisma.should.equal 9
+
+    it 'creates a name', ->
+      should.exist character.name
+
+    it 'can change name', ->
+      character.name = 'testname'
+      character.name.should.equal 'testname'
 
   it 'should have health', ->
     init()

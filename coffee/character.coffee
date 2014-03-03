@@ -1,6 +1,6 @@
 define [], () ->
   class Character
-    constructor: (@rollD, @weapon, @armor) ->
+    constructor: (@rollD, @weapon, @armor, name) ->
       @strength = (@rollD 6) + (@rollD 6) + (@rollD 6)
       @stamina = (@rollD 6) + (@rollD 6) + (@rollD 6)
       @power = (@rollD 6) + (@rollD 6) + (@rollD 6)
@@ -11,6 +11,7 @@ define [], () ->
       @health = Math.round((@stamina + @size) / 2)
       @attack = 10 + (@rollD 90)
       @defence = 5 + (@rollD 90)
+      @name = name || (rollD 1000)
 
     dexterityStrikeRank: () ->
       switch
@@ -36,6 +37,6 @@ define [], () ->
 
     loadValues: (valueObject) ->
       { @strength, @stamina, @power, @dexterity, @charisma,
-      @intelligence, @size, @health, @attack, @defence, @weapon, @armor } = valueObject
+      @intelligence, @size, @health, @attack, @defence, @weapon, @armor, @name } = valueObject
 
   return Character
