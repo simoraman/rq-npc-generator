@@ -1,15 +1,18 @@
 <div class="character">
+  <div class="header">
+  <span class="name">{{name}}</span> <span class="controls"><button class="save">Save</button></span>
+  </div>
   <div class="attributes">
-    <span>Strength: {{strength}} </span>
-    <span>Constitution: {{stamina}}</span>
-    <span>Size: {{size}}</span>
-    <span>Intelligence: {{intelligence}}</span>
-    <span>Power: {{power}}</span>
-    <span>Dexterity: {{dexterity}}</span>
-    <span>Charisma: {{charisma}}</span>
+    <span class="title">Strength: </span> {{strength}}
+    <span class="title">Constitution:</span> {{stamina}}
+    <span class="title">Size:</span> {{size}}
+    <span class="title">Intelligence:</span> {{intelligence}}
+    <span class="title">Power:</span> {{power}}
+    <span class="title">Dexterity:</span> {{dexterity}}
+    <span class="title">Charisma:</span> {{charisma}}
   </div>
   <div class="strikeRank">
-    Strike Rank:
+    <span class="title">Strike Rank:</span>
     DEX: {{ dexterityStrikeRank }} + SIZ: {{ sizeStrikeRank }} + Weapon: {{ weapon.StrikeRank }} = {{ totalStrikeRank }}
   </div>
   <div class="weapon">

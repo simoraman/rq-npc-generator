@@ -1,0 +1,11 @@
+.character {
+    border: 2px solid brown;
+    background: beige;
+}
+.character > div {
+    padding: 5px;
+}
+
+span.title {
+    font-size: smaller;
+}
