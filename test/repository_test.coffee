@@ -12,23 +12,11 @@ describe 'Weapon repository', ->
     repo = new WeaponRepository(weapons)
     repo.getWeapon().Weapon.should.equal "Battleaxe"
 
-class CharacterRepository
-  constructor: () ->
-
-  save: (character) -> localStorage[character.name] = JSON.stringify(character)
-
-  get: (key) ->
-    values = JSON.parse(localStorage[key])
-    character = new Character(rollD)
-    character.loadValues values
-    character
-
 describe 'Character repository', ->
     before ->
       repo = new CharacterRepository()
       character = new Character(rollD, null, {'protection':0}, 'name')
       character.health = 10
-      console.log(character.name)
       repo.save(character)
       @result = repo.get('name')
 

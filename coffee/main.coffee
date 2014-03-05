@@ -9,20 +9,24 @@ require.config({
     }
 })
 
-require(['jquery', 'bacon', 'bacon.jquery', 'handlebars', 'hbs!../../templates/character', 'character', 'dice', 'weaponRepository', 'armorRepository', 'bacon.model'],
-($, Bacon, bjq, Handlebars, character_template, Character, dice, WeaponRepository, ArmorRepository, Model) ->
+require(['jquery', 'bacon', 'bacon.jquery', 'handlebars', 'hbs!../../templates/character', 'character', 'dice', 'weaponRepository', 'armorRepository', 'bacon.model', 'characterRepository'],
+($, Bacon, bjq, Handlebars, character_template, Character, dice, WeaponRepository, ArmorRepository, Model, CharacterRepository) ->
 
   $.get('data/weapons.json', (weapons) ->
     $.get('data/armor.json', (armor) ->
       init(weapons, armor)
     )
   )
+
   init = (weapons, armor) ->
     repo = new WeaponRepository(weapons)
-    character = new Character(dice, repo.getWeapon(), new ArmorRepository(armor).getArmor())
+    armorRepo = new ArmorRepository(armor)
+    characterRepo = new CharacterRepository()
+    $('#createCharacter').clickE().subscribe( -> generateCharacter(repo, armorRepo, characterRepo))
 
+  generateCharacter = (weaponRepo, armorRepo, characterRepo) ->
+    character = new Character(dice, weaponRepo.getWeapon(), armorRepo.getArmor())
     html = character_template(character)
-    $('body').html(html)
 
     hitAmount = bjq.textFieldValue($('#hitAmount'))
     hitAmount.changes().assign($('#hitDisplay'), 'text')
@@ -34,4 +38,8 @@ require(['jquery', 'bacon', 'bacon.jquery', 'handlebars', 'hbs!../../templates/c
       hitAmount.set(0)
     )
 
+    saveClicks = html.find('.save').clickE()
+    saveClicks.subscribe( -> characterRepo.save(character))
+
+    $('body').append(html)
 )
