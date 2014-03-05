@@ -27,6 +27,7 @@ require(['jquery', 'bacon', 'bacon.jquery', 'handlebars', 'hbs!../../templates/c
   generateCharacter = (weaponRepo, armorRepo, characterRepo) ->
     character = new Character(dice, weaponRepo.getWeapon(), armorRepo.getArmor())
     html = character_template(character)
+    $('body').append(html)
 
     hitAmount = bjq.textFieldValue($('#hitAmount'))
     hitAmount.changes().assign($('#hitDisplay'), 'text')
@@ -38,8 +39,8 @@ require(['jquery', 'bacon', 'bacon.jquery', 'handlebars', 'hbs!../../templates/c
       hitAmount.set(0)
     )
 
-    saveClicks = html.find('.save').clickE()
+    saveClicks = $('#character' + character.name + ' .save').clickE()
     saveClicks.subscribe( -> characterRepo.save(character))
 
-    $('body').append(html)
+
 )
