@@ -27,12 +27,11 @@ require(['jquery', 'bacon', 'bacon.jquery', 'handlebars', 'hbs!../../templates/c
     characters = characterRepo.getCharacters()
     renderCharacter character for character in characters
 
-
   generateCharacter = (weaponRepo, armorRepo, characterRepo) ->
     character = new Character(dice, weaponRepo.getWeapon(), armorRepo.getArmor())
     renderCharacter(character, characterRepo)
 
-  renderCharacter= (character, characterRepo) ->
+  renderCharacter = (character, characterRepo) ->
     html = character_template(character)
     $('body').append(html)
 

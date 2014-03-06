@@ -55,3 +55,16 @@ describe 'Character repository', ->
       char.hitFor(5)
       char.health.should.equal 5
     after -> localStorage.clear()
+
+  describe 'when character is not needed', ->
+    it 'can be removed', ->
+      repo = new CharacterRepository()
+      character = new Character(rollD, null, {'protection':0}, 'name')
+      character.health = 10
+      repo.save(character)
+      characters = repo.getCharacters()
+      characters.length.should.equal 1
+      repo.remove('name')
+      characters = repo.getCharacters()
+      characters.length.should.equal 0
+    after -> localStorage.clear()

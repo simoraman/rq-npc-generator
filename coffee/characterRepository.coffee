@@ -3,17 +3,18 @@ define ['dice', 'character'], (dice, Character) ->
     constructor: () ->
 
     getStore: () ->
-      if localStorage['characterStore'] == undefined
+      store = localStorage['characterStore']
+      if store == undefined or store == {}
         {}
       else
-        JSON.parse(localStorage['characterStore'])
+        JSON.parse(store)
 
-    setStore: (content) -> localStorage['characterStore'] = content
+    setStore: (content) -> localStorage['characterStore'] = JSON.stringify(content)
 
     save: (character) ->
       characterList = @getStore()
       characterList[character.name] = character
-      @setStore JSON.stringify(characterList)
+      @setStore characterList
 
     get: (key) ->
       values = @getStore()[key]
@@ -30,4 +31,10 @@ define ['dice', 'character'], (dice, Character) ->
         character.loadValues val
         array.push character
       array
+
+    remove: (name) ->
+      store = @getStore()
+      delete(store.name)
+      @setStore store
+
   return CharacterRepository
