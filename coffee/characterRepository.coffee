@@ -23,7 +23,7 @@ define ['dice', 'character'], (dice, Character) ->
       character
 
     getCharacters: () ->
-      chars = @getStore()# JSON.parse(localStorage['characterStore'])
+      chars = @getStore()
       array = []
 
       for key,val of chars
@@ -34,7 +34,7 @@ define ['dice', 'character'], (dice, Character) ->
 
     remove: (name) ->
       store = @getStore()
-      delete(store.name)
+      delete(store[name])
       @setStore store
 
   return CharacterRepository

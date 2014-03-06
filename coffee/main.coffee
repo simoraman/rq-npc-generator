@@ -25,7 +25,7 @@ require(['jquery', 'bacon', 'bacon.jquery', 'handlebars', 'hbs!../../templates/c
 
   loadCharacters = (characterRepo) ->
     characters = characterRepo.getCharacters()
-    renderCharacter character for character in characters
+    renderCharacter(character, characterRepo) for character in characters
 
   generateCharacter = (weaponRepo, armorRepo, characterRepo) ->
     character = new Character(dice, weaponRepo.getWeapon(), armorRepo.getArmor())
@@ -48,5 +48,9 @@ require(['jquery', 'bacon', 'bacon.jquery', 'handlebars', 'hbs!../../templates/c
     saveClicks = $('#character' + character.name + ' .save').clickE()
     saveClicks.subscribe( -> characterRepo.save(character))
 
-
+    deleteClicks = $('#character' + character.name + ' .delete').clickE()
+    deleteClicks.subscribe( ->
+      characterRepo.remove(character.name)
+      $('#character' + character.name).fadeOut()
+    )
 )

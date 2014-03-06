@@ -57,14 +57,26 @@ describe 'Character repository', ->
     after -> localStorage.clear()
 
   describe 'when character is not needed', ->
-    it 'can be removed', ->
-      repo = new CharacterRepository()
+    beforeEach ->
+      @repo = new CharacterRepository()
       character = new Character(rollD, null, {'protection':0}, 'name')
       character.health = 10
-      repo.save(character)
-      characters = repo.getCharacters()
+      @repo.save(character)
+
+    it 'can be removed', ->
+      characters = @repo.getCharacters()
       characters.length.should.equal 1
-      repo.remove('name')
-      characters = repo.getCharacters()
+      @repo.remove('name')
+      characters = @repo.getCharacters()
       characters.length.should.equal 0
+
+    it 'removes only selected', ->
+      character = new Character(rollD, null, {'protection':0}, 'name2')
+      @repo.save(character)
+      characters = @repo.getCharacters()
+      characters.length.should.equal 2
+      @repo.remove('name')
+      characters = @repo.getCharacters()
+      characters.length.should.equal 1
+      characters[0].name.should.equal 'name2'
     after -> localStorage.clear()
