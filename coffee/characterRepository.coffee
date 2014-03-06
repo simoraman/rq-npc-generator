@@ -1,12 +1,33 @@
-define [], () ->
+define ['dice', 'character'], (dice, Character) ->
   class CharacterRepository
     constructor: () ->
 
-    save: (character) -> localStorage[character.name] = JSON.stringify(character)
+    getStore: () ->
+      if localStorage['characterStore'] == undefined
+        {}
+      else
+        JSON.parse(localStorage['characterStore'])
+
+    setStore: (content) -> localStorage['characterStore'] = content
+
+    save: (character) ->
+      characterList = @getStore()
+      characterList[character.name] = character
+      @setStore JSON.stringify(characterList)
 
     get: (key) ->
-      values = JSON.parse(localStorage[key])
-      character = new Character(rollD)
+      values = @getStore()[key]
+      character = new Character(dice)
       character.loadValues values
       character
+
+    getCharacters: () ->
+      chars = @getStore()# JSON.parse(localStorage['characterStore'])
+      array = []
+
+      for key,val of chars
+        character = new Character(dice)
+        character.loadValues val
+        array.push character
+      array
   return CharacterRepository

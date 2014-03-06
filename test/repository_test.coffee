@@ -13,6 +13,7 @@ describe 'Weapon repository', ->
     repo.getWeapon().Weapon.should.equal "Battleaxe"
 
 describe 'Character repository', ->
+  describe 'when getting single character', ->
     before ->
       repo = new CharacterRepository()
       character = new Character(rollD, null, {'protection':0}, 'name')
@@ -30,4 +31,27 @@ describe 'Character repository', ->
     it 'can fetch by name', ->
       @result.name.should.equal 'name'
 
+    after -> localStorage.clear()
+
+  describe 'when querying several characters', ->
+    before ->
+      repo = new CharacterRepository()
+      character = new Character(rollD, null, {'protection':0}, 'name')
+      character.health = 10
+      repo.save character
+      character = new Character(rollD, null, {'protection':0}, 'name2')
+      repo.save character
+      @characters = repo.getCharacters()
+
+    it 'returns all characters', ->
+      @characters.length.should.equal 2
+
+    it 'returns correct characters', ->
+      @characters[0].name.should.equal 'name'
+      @characters[1].name.should.equal 'name2'
+
+    it 'returns rich objects', ->
+      char = @characters[0]
+      char.hitFor(5)
+      char.health.should.equal 5
     after -> localStorage.clear()

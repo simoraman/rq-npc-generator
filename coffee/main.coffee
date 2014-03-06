@@ -12,20 +12,27 @@ require.config({
 require(['jquery', 'bacon', 'bacon.jquery', 'handlebars', 'hbs!../../templates/character', 'character', 'dice', 'weaponRepository', 'armorRepository', 'bacon.model', 'characterRepository'],
 ($, Bacon, bjq, Handlebars, character_template, Character, dice, WeaponRepository, ArmorRepository, Model, CharacterRepository) ->
 
-  $.get('data/weapons.json', (weapons) ->
-    $.get('data/armor.json', (armor) ->
-      init(weapons, armor)
-    )
-  )
+  weaponStream = Bacon.$.ajax('data/weapons.json')
+  armorStream = Bacon.$.ajax('data/armor.json')
+  Bacon.combineAsArray(weaponStream, armorStream).onValue( (result) -> init(result[0], result[1]) )
 
   init = (weapons, armor) ->
     repo = new WeaponRepository(weapons)
     armorRepo = new ArmorRepository(armor)
     characterRepo = new CharacterRepository()
     $('#createCharacter').clickE().subscribe( -> generateCharacter(repo, armorRepo, characterRepo))
+    loadCharacters(characterRepo)
+
+  loadCharacters = (characterRepo) ->
+    characters = characterRepo.getCharacters()
+    renderCharacter character for character in characters
+
 
   generateCharacter = (weaponRepo, armorRepo, characterRepo) ->
     character = new Character(dice, weaponRepo.getWeapon(), armorRepo.getArmor())
+    renderCharacter(character, characterRepo)
+
+  renderCharacter= (character, characterRepo) ->
     html = character_template(character)
     $('body').append(html)
 
