@@ -1,0 +1,24 @@
+CACHE MANIFEST
+#Version 10
+
+http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js
+/styles.css
+/data/armor.json
+/data/weapons.json
+/templates/character.hbs
+/scripts/app/armorRepository.js
+/scripts/app/character.js
+/scripts/app/characterRepository.js
+/scripts/app/dice.js
+/scripts/app/weaponRepository.js
+/scripts/bacon/dist/Bacon.min.js
+/scripts/bacon.jquery/bacon.jquery.min.js
+/scripts/bacon.model/bacon.model.min.js
+/scripts/handlebars/handlebars.js
+/scripts/require-handlebars-plugin/hbs/i18nprecompile.js
+/scripts/require-handlebars-plugin/hbs/json2.js
+/scripts/require-handlebars-plugin/hbs/underscore.js
+/scripts/require-handlebars-plugin/hbs/handlebars.js
+/scripts/require-handlebars-plugin/hbs.js
+/scripts/requirejs/require.js
+/scripts/app/main.js

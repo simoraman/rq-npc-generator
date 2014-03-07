@@ -3,7 +3,7 @@ require.config({
         'jquery': 'http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min',
         'handlebars': '../handlebars/handlebars',
         'hbs': '../require-handlebars-plugin/hbs',
-        'bacon':'http://cdnjs.cloudflare.com/ajax/libs/bacon.js/0.7.2/bacon.min'
+        'bacon':'../bacon/dist/Bacon.min'
         'bacon.jquery': '../bacon.jquery/bacon.jquery.min',
         'bacon.model': '../bacon.model/bacon.model.min'
     }
