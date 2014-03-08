@@ -15,6 +15,8 @@
   ],
   "dependencies": {
     "bacon": "latest",
+    "bacon.jquery": "https://github.com/baconjs/bacon.jquery.git",
+    "bacon.model": "https://github.com/baconjs/bacon.model.git",
     "handlebars": "latest",
     "requirejs": "latest",
     "requirejs-text": "latest",

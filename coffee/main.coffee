@@ -4,8 +4,8 @@ require.config({
         'handlebars': '../handlebars/handlebars',
         'hbs': '../require-handlebars-plugin/hbs',
         'bacon':'../bacon/dist/Bacon.min'
-        'bacon.jquery': '../bacon.jquery/bacon.jquery.min',
-        'bacon.model': '../bacon.model/bacon.model.min'
+        'bacon.jquery': '../bacon.jquery/dist/bacon.jquery.min',
+        'bacon.model': '../bacon.model/dist/bacon.model.min'
     }
 })
 
