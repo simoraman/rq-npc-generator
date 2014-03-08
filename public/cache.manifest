@@ -1,5 +1,5 @@
 CACHE MANIFEST
-#Version 10
+#Version 11
 
 http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js
 /styles.css
@@ -12,8 +12,8 @@ http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js
 /scripts/app/dice.js
 /scripts/app/weaponRepository.js
 /scripts/bacon/dist/Bacon.min.js
-/scripts/bacon.jquery/bacon.jquery.min.js
-/scripts/bacon.model/bacon.model.min.js
+/scripts/bacon.jquery/dist/bacon.jquery.min.js
+/scripts/bacon.model/dist/bacon.model.min.js
 /scripts/handlebars/handlebars.js
 /scripts/require-handlebars-plugin/hbs/i18nprecompile.js
 /scripts/require-handlebars-plugin/hbs/json2.js
