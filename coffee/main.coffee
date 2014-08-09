@@ -34,23 +34,24 @@ require(['jquery', 'bacon', 'bacon.jquery', 'handlebars', 'hbs!../../templates/c
   renderCharacter = (character, characterRepo) ->
     html = character_template(character)
     $('body').append(html)
+    character_html = $('#character' + character.name)
 
-    hitAmount = bjq.textFieldValue($('#hitAmount'))
-    hitAmount.changes().assign($('#hitDisplay'), 'text')
+    hitAmount = bjq.textFieldValue(character_html.find('.hitAmount'))
+    hitAmount.changes().assign(character_html.find('.hitDisplay'), 'text')
 
-    clicks = $('#hit').clickE()
+    clicks = character_html.find('.hit').clickE()
     clicks.onValue( ->
-      character.hitFor($('#hitDisplay').text())
-      $('#health').text(character.health)
+      character.hitFor(character_html.find('.hitDisplay').text())
+      character_html.find('.health').text(character.health)
       hitAmount.set(0)
     )
 
-    saveClicks = $('#character' + character.name + ' .save').clickE()
+    saveClicks = character_html.find('.save').clickE()
     saveClicks.subscribe( -> characterRepo.save(character))
 
-    deleteClicks = $('#character' + character.name + ' .delete').clickE()
+    deleteClicks = character_html.find('.delete').clickE()
     deleteClicks.subscribe( ->
       characterRepo.remove(character.name)
-      $('#character' + character.name).fadeOut()
+      character_html.fadeOut()
     )
 )
