@@ -60,12 +60,12 @@ require(['jquery', 'bacon', 'bacon.jquery', 'handlebars', 'hbs!../../templates/c
     setupName(characterHtml)
 
   setupName = (document) ->
-
     document.find('.name').clickE().onValue((evt) ->
       $originalElement = $(evt.target)
       currentValue = evt.target.innerText
       $input = $('<input id="asd" type="text" value="' + currentValue + '"></input>')
       $originalElement.replaceWith($input)
+      $input.focus()
       keyStream = $input.keyupE()
       keyStream.map('.keyCode').onValue((key) ->
         if(key == 13)
