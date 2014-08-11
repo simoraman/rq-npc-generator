@@ -34,24 +34,44 @@ require(['jquery', 'bacon', 'bacon.jquery', 'handlebars', 'hbs!../../templates/c
   renderCharacter = (character, characterRepo) ->
     html = character_template(character)
     $('body').append(html)
-    character_html = $('#character' + character.name)
+    characterHtml = $('#character' + character.name)
 
-    hitAmount = bjq.textFieldValue(character_html.find('.hitAmount'))
-    hitAmount.changes().assign(character_html.find('.hitDisplay'), 'text')
+    hitAmount = bjq.textFieldValue(characterHtml.find('.hitAmount'))
+    hitAmount.changes().assign(characterHtml.find('.hitDisplay'), 'text')
 
-    clicks = character_html.find('.hit').clickE()
+    clicks = characterHtml.find('.hit').clickE()
     clicks.onValue( ->
-      character.hitFor(character_html.find('.hitDisplay').text())
-      character_html.find('.health').text(character.health)
+      character.hitFor(characterHtml.find('.hitDisplay').text())
+      characterHtml.find('.health').text(character.health)
       hitAmount.set(0)
     )
 
-    saveClicks = character_html.find('.save').clickE()
-    saveClicks.subscribe( -> characterRepo.save(character))
+    saveClicks = characterHtml.find('.save').clickE()
+    saveClicks.subscribe( ->
+      character.name = characterHtml.find('.name').text()
+      characterRepo.save(character)
+    )
 
-    deleteClicks = character_html.find('.delete').clickE()
+    deleteClicks = characterHtml.find('.delete').clickE()
     deleteClicks.subscribe( ->
       characterRepo.remove(character.name)
-      character_html.fadeOut()
+      characterHtml.fadeOut()
+    )
+    setupName(characterHtml)
+
+  setupName = (document) ->
+
+    document.find('.name').clickE().onValue((evt) ->
+      $originalElement = $(evt.target)
+      currentValue = evt.target.innerText
+      $input = $('<input id="asd" type="text" value="' + currentValue + '"></input>')
+      $originalElement.replaceWith($input)
+      keyStream = $input.keyupE()
+      keyStream.map('.keyCode').onValue((key) ->
+        if(key == 13)
+          $originalElement.text($input.val())
+          $input.replaceWith($originalElement)
+          setupName(document)
+      )
     )
 )
